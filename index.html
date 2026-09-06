@@ -953,8 +953,8 @@ el.textContent=message;
 
 async function signUp(){
 
-const email=document.getElementById("email").value.trim();
-const password=document.getElementById("p
+const email=document.getElementById("email").value.trim();<div class="sum-row">
+
 const password=document.getElementById("password").value;
 
 if(!email || !password){
@@ -977,7 +977,7 @@ if(error){
   return;
 }
 
-showAuthMessage("Account created! Please check your email to confirm your account.");
+showAuthMessage("Account created! Please check your email.");
 }
 
 async function signIn(){
@@ -1037,8 +1037,8 @@ document.getElementById("accountArea").innerHTML=`
 function openCheckout(){
 
 if(!cart.length){
-  alert("Your cart is empty.");
-  return;
+alert("Your cart is empty.");
+return;
 }
 
 closeCart();
@@ -1073,8 +1073,8 @@ document.getElementById("checkoutModal").classList.remove("show");
 async function placeOrder(){
 
 if(!cart.length){
-  alert("Your cart is empty.");
-  return;
+alert("Your cart is empty.");
+return;
 }
 
 const name=document.getElementById("customerName").value.trim();
@@ -1083,28 +1083,28 @@ const address=document.getElementById("customerAddress").value.trim();
 const pincode=document.getElementById("customerPincode").value.trim();
 
 if(!name || !phone || !address || !pincode){
-  alert("Please fill all required details.");
-  return;
+alert("Please fill all required details.");
+return;
 }
 
 if(!/^[0-9]{10}$/.test(phone)){
-  alert("Please enter a valid 10 digit mobile number.");
-  return;
+alert("Please enter a valid 10 digit mobile number.");
+return;
 }
 
 if(!/^[0-9]{6}$/.test(pincode)){
-  alert("Please enter a valid 6 digit pincode.");
-  return;
+alert("Please enter a valid 6 digit pincode.");
+return;
 }
 
 const orderData={
-  customer_name:name,
-  customer_phone:phone,
-  customer_address:address,
-  pincode:pincode,
-  total:cartTotal(),
-  payment_method:"cod",
-  status:"placed"
+customer_name:name,
+customer_phone:phone,
+customer_address:address,
+pincode:pincode,
+total:cartTotal(),
+payment_method:"cod",
+status:"placed"
 };
 
 try{
@@ -1127,19 +1127,11 @@ saveCart();
 updateCartCount();
 closeCheckout();
 
-document.getElementById("customerName").value="";
-document.getElementById("customerPhone").value="";
-document.getElementById("customerAddress").value="";
-document.getElementById("customerPincode").value="";
-
 }catch(error){
 
 console.error(error);
 
-alert(
-"Order could not be placed right now.\n\n"+
-"Please try again."
-);
+alert("Order could not be placed right now. Please try again.");
 
 }
 
@@ -1192,7 +1184,7 @@ try{
 const {data}=await supabaseClient.auth.getUser();
 
 if(data && data.user){
-  currentUser=data.user;
+currentUser=data.user;
 }
 
 }catch(error){
