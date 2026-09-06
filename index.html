@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b3d91">
+  <title>Krishna Enterprises | Your Local Online Shopping Platform</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f8f3e7;
+      color: #172033;
+    }
+
+    header {
+      background: #073b8f;
+      color: white;
+      padding: 14px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 12px rgba(0,0,0,.15);
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f5c542;
+      color: #073b8f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      font-weight: bold;
+      border: 3px solid white;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+    }
+
+    .brand p {
+      font-size: 10px;
+      opacity: .85;
+      margin-top: 3px;
+    }
+
+    .cart-btn {
+      background: #f5c542;
+      color: #073b8f;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #073b8f, #0b62c7);
+      color: white;
+      padding: 38px 18px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 31px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: .95;
+    }
+
+    .delivery-strip {
+      max-width: 900px;
+      margin: -18px auto 25px;
+      padding: 16px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 6px 22px rgba(0,0,0,.12);
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .delivery-strip div {
+      flex: 1;
+    }
+
+    .delivery-strip strong {
+      display: block;
+      color: #073b8f;
+      font-size: 15px;
+    }
+
+    .delivery-strip span {
+      font-size: 11px;
+      color: #555;
+    }
+
+    .search-box {
+      max-width: 900px;
+      margin: 0 auto 25px;
+      padding: 0 16px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 2px solid #d9d0bb;
+      border-radius: 15px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding-bottom: 100px;
+    }
+
+    .section {
+      padding: 18px 16px 10px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .section-heading h3 {
+      color: #073b8f;
+      font-size: 22px;
+    }
+
+    .section-heading span {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .section-info {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      border-left: 4px solid #f5c542;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 17px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      padding-bottom: 12px;
+    }
+
+    .product-image {
+      height: 135px;
+      background: #eef3fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+    }
+
+    .product-content {
+      padding: 11px;
+    }
+
+    .product h4 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .product small {
+      display: block;
+      color: #777;
+      font-size: 11px;
+      margin-bottom: 9px;
+    }
+
+    .price {
+      color: #073b8f;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .add-btn {
+      width: 100%;
+      margin-top: 9px;
+      border: 1px solid #073b8f;
+      background: white;
+      color: #073b8f;
+      border-radius: 9px;
+      padding: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background: #073b8f;
+      color: white;
+    }
+
+    .dairy {
+      background: #eef7ff;
+      border-radius: 20px;
+      margin: 10px 16px;
+      padding-top: 5px;
+    }
+
+    footer {
+      background: #073b8f;
+      color: white;
+      text-align: center;
+      padding: 30px 16px;
+    }
+
+    footer h3 {
+      color: #f5c542;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 12px;
+      opacity: .9;
+      line-height: 1.6;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 5px;
+      z-index: 200;
+    }
+
+    .bottom-nav button {
+      background: none;
+      border: none;
+      color: #073b8f;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 500;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .modal-box {
+      background: #fff;
+      max-width: 520px;
+      margin: 25px auto;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .close {
+      border: none;
+      background: #eee;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item strong {
+      font-size: 13px;
+    }
+
+    .cart-item small {
+      color: #777;
+    }
+
+    .total-box {
+      background: #f8f3e7;
+      border-radius: 14px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 7px 0;
+      font-size: 14px;
+    }
+
+    .grand-total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #073b8f;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 13px;
+      margin-top: 15px;
+      background: #073b8f;
+      color: white;
+      border: none;
+      border-radius: 11px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .checkout-form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .checkout-form h3 {
+      color: #073b8f;
+      margin-bottom: 12px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea,
+    .checkout-form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 9px;
+      font-size: 14px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+
+    @media (min-width: 650px) {
+      .products {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero h2 {
+        font-size: 42px;
+      }
+
+      .product-image {
+        height: 170px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-row">
+    <div class="brand">
+      <div class="logo">K</div>
+      <div>
+        <h1>KRISHNA ENTERPRISES</h1>
+        <p>Your Local Online Shopping Platform</p>
+      </div>
+    </div>
+
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Cart <span id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Everything You Need.<br>Delivered Your Way.</h2>
+  <p>
+    ⚡ Quick delivery for products we can arrange locally.
+    📦 Regular delivery for special and sourcing-based orders.
+    🥛 Fresh dairy essentials in one place.
+  </p>
+</section>
+
+<div class="delivery-strip">
+  <div>
+    <strong>⚡ 15–60 Min</strong>
+    <span>Quick Delivery</span>
+  </div>
+
+  <div>
+    <strong>📦 2–5 Days</strong>
+    <span>Regular Delivery</span>
+  </div>
+
+  <div>
+    <strong>🚚 ₹200+</strong>
+    <span>FREE Delivery</span>
+  </div>
+</div>
+
+<div class="search-box">
+  <input
+    type="search"
+    id="searchInput"
+    placeholder="🔎 Search products..."
+    oninput="searchProducts()"
+  >
+</div>
+
+<main>
+
+  <!-- QUICK DELIVERY -->
+  <section class="section" id="quick">
+    <div class="section-heading">
+      <h3>⚡ Quick Delivery</h3>
+      <span>15–60 minutes</span>
+    </div>
+
+    <div class="section-info">
+      Products that can be arranged locally and delivered quickly.
+      <b>Availability may vary by area and stock.</b>
+    </div>
+
+    <div class="products">
+
+      <div class="product" data-name="milk">
+        <div class="product-image">🥛</div>
+        <div class="product-content">
+          <h4>Fresh Toned Milk</h4>
+          <small>1 Litre</small>
+          <div class="price">₹56</div>
+          <button class="add-btn" onclick="addToCart('Fresh Toned Milk',56,'Quick')">ADD</button>
+        </div>
+      </div>
+
+      <div class="product" data-name="bread">
+        <div class="product-image">🍞</div>
+        <div class="product-content">
+          <h4>Sandwich Bread</h4>
+          <small>400 g</small>
+          <div class="price">₹45</div>
+          <button class="add-btn" onclick="addToCart('Sandwich Bread',45,'Quick')">ADD</button>
+        </div>
+      </div>
+
+      <div class="product" data-name="banana">
+        <div class="product-image">🍌</div>
+        <div class="product-content">
+          <h4>Robusta Bananas</h4>
+          <small>Approx. 1 kg</small>
+          <div class="price">₹48</div>
+          <button class="add-btn" onclick="addToCart('Robusta Bananas',48,'Quick')">ADD</button>
+        </div>
+      </div>
+
+      <div class="product" data-name="water">
+        <div class="product-image">💧</div>
+        <div class="product-content">
+          <h4>Packaged Drinking Water</h4>
+          <small>1 Litre</small>
+          <div class="price">₹20</div>
+          <button class="add-btn" onclick="addToCart('Packaged Drinking Water',20,'Quick')">ADD</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- REGULAR DELIVERY -->
+  <section class="section" id="regular">
+    <div class="section-heading">
+      <h3>📦 Regular Delivery</h3>
+      <span>2–5 days</span>
+    </div>
+
+    <div class="section-info">
+      Special products that may require additional sourcing or arranging time.
+    </div>
+
+    <div class="products">
+
+      <div class="product" data-name="earbuds">
+        <div class="product-image">🎧</div>
+        <div class="product-content">
+          <h4>Wireless Earbuds</h4>
+          <small>Special Order</small>
+          <div class="price">₹999</div>
+          <button class="add-btn" onclick="addToCart('Wireless Earbuds',999,'Regular')">ADD</button>
+        </div>
+      </div>
+
+      <div class="product" data-name="speaker">
+        <div class="product-image">🔊</div>
+        <div class="product-content">
+          <h4>Bluetooth Speaker</h4>
+          <small>Special Order</small>
+          <div class="price">₹1,499</div>
+          <button class="add-btn" onclick="addToCart('Bluetooth Speaker',1499,'Regular')">ADD</button>
+        </div>
+      </div>
+
+      <div class="product" data-name="lamp">
+        <div class="product-image">💡</div>
+        <div class="product-content">
+          <h4>Modern Table Lamp</h4>
+          <small>Home Décor</small>
+          <div class="price">₹799</div>
+          <button class="add-btn" onclick="addToCart('Modern Table Lamp',799,'Regular')">ADD</button>
+        </div>
+      </div>
+
+      <div class="product" data-name="kettle">
+        <div class="product-image">🫖</div>
+        <div class="product-content">
+          <h4>Electric Kettle</h4>
+          <small>Appliance</small>
+          <div class="price">₹1,299</div>
+          <button class="add-btn" onclick="addToCart('Electric Kettle',1299,'Regular')">ADD</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- DAIRY ZONE -->
+  <section class="dairy" id="dairy">
+    <section class="section">
+      <div class="section-heading">
+        <h3>🥛 Dairy Zone</h3>
+        <span>Fresh Dairy</span>
+      </div>
+
+      <div class="section-info">
+        Fresh dairy and everyday dairy essentials.
+      </div>
+
+      <div class="products">
+
+        <div class="product" data-name="curd">
+          <div class="product-image">🥣</div>
+          <div class="product-content">
+            <h4>Fresh Curd</h4>
+            <small>400 g</small>
+            <div class="price">₹45</div>
+            <button class="add-btn" onclick="addToCart('Fresh Curd',45,'Dairy')">ADD</button>
+          </div>
+        </div>
+
+        <div class="product" data-name="paneer">
+          <div class="product-image">🧀</div>
+          <div class="product-content">
+            <h4>Fresh Paneer</h4>
+            <small>200 g</small>
+            <div class="price">₹90</div>
+            <button class="add-btn" onclick="addToCart('Fresh Paneer',90,'Dairy')">ADD</button>
+          </div>
+        </div>
+
+        <div class="product" data-name="butter">
+          <div class="product-image">🧈</div>
+          <div class="product-content">
+            <h4>Butter</h4>
+            <small>100 g</small>
+            <div class="price">₹58</div>
+            <button class="add-btn" onclick="addToCart('Butter',58,'Dairy')">ADD</button>
+          </div>
+        </div>
+
+        <div class="product" data-name="lassi">
+          <div class="product-image">🥤</div>
+          <div class="product-content">
+            <h4>Fresh Lassi</h4>
+            <small>200 ml</small>
+            <div class="price">₹30</div>
+            <button class="add-btn" onclick="addToCart('Fresh Lassi',30,'Dairy')">ADD</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </section>
+
+</main>
+
+
+<footer>
+  <h3>KRISHNA ENTERPRISES</h3>
+  <p>Your Local Online Shopping Platform</p>
+  <p>⚡ Quick Delivery • 📦 Regular Delivery • 🥛 Dairy Zone</p>
+  <br>
+  <p>₹200 or above → FREE DELIVERY</p>
+  <p>Below ₹200 → ₹40 DELIVERY CHARGE</p>
+  <br>
+  <p>© 2026 Krishna Enterprises. All Rights Reserved.</p>
+</footer>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">🏠 Home</button>
+  <button onclick="document.getElementById('quick').scrollIntoView({behavior:'smooth'})">⚡ Quick</button>
+  <button onclick="document.getElementById('regular').scrollIntoView({behavior:'smooth'})">📦 Regular</button>
+  <button onclick="document.getElementById('dairy').scrollIntoView({behavior:'smooth'})">🥛 Dairy</button>
+  <button onclick="openCart()">🛒 Cart</button>
+</div>
+
+
+<!-- CART MODAL -->
+<div class="modal" id="cartModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>🛒 Your Cart</h2>
+      <button class="close" onclick="closeCart()">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div id="cartSummary"></div>
+
+    <div class="checkout-form" id="checkoutForm">
+
+      <h3>📦 Delivery Details</h3>
+
+      <input id="customerName" type="text" placeholder="Full Name">
+
+      <input id="customerPhone" type="tel" placeholder="Mobile Number">
+
+      <textarea id="customerAddress" rows="3" placeholder="Full Delivery Address"></textarea>
+
+      <input id="customerPincode" type="text" placeholder="Pincode">
+
+      <select id="paymentMethod">
+        <option value="COD">Cash on Delivery</option>
+      </select>
+
+      <button class="checkout-btn" onclick="placeOrder()">
+        ✅ Place Order
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+
+  let cart = [];
+
+  function addToCart(name, price, type) {
+
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({
+        name: name,
+        price: price,
+        type: type,
+        qty: 1
+      });
+    }
+
+    updateCartCount();
+
+    alert(name + " added to cart 🛒");
+  }
+
+
+  function updateCartCount() {
+
+    let count = cart.reduce((total, item) => total + item.qty, 0);
+
+    document.getElementById("cartCount").innerText = count;
+  }
+
+
+  function openCart() {
+
+    document.getElementById("cartModal").style.display = "block";
+
+    renderCart();
+  }
+
+
+  function closeCart() {
+
+    document.getElementById("cartModal").style.display = "none";
+
+    document.getElementById("checkoutForm").style.display = "none";
+  }
+
+
+  function renderCart() {
+
+    const container = document.getElementById("cartItems");
+    const summary = document.getElementById("cartSummary");
+
+    if (cart.length === 0) {
+
+      container.innerHTML = `
+        <div class="empty">
+          🛒 Your cart is empty.
+        </div>
+      `;
+
+      summary.innerHTML = "";
+
+      return;
+    }
+
+
+    container.innerHTML = cart.map((item, index) => `
+      <div class="cart-item">
+
+        <div>
+          <strong>${item.name}</strong><br>
+          <small>${item.type} • Qty: ${item.qty}</small>
+        </div>
+
+        <div>
+          ₹${item.price * item.qty}
+          <button onclick="removeItem(${index})"
+            style="border:none;background:none;color:#d00;margin-left:7px;cursor:pointer;">
+            ✕
+          </button>
+        </div>
+
+      </div>
+    `).join("");
+
+
+    const subtotal = cart.reduce(
+      (total, item) => total + item.price * item.qty,
+      0
+    );
+
+
+    const delivery = subtotal >= 200 ? 0 : 40;
+
+    const total = subtotal + delivery;
+
+
+    summary.innerHTML = `
+      <div class="total-box">
+
+        <div class="total-row">
+          <span>Subtotal</span>
+          <strong>₹${subtotal}</strong>
+        </div>
+
+        <div class="total-row">
+          <span>Delivery</span>
+          <strong>${delivery === 0 ? "FREE" : "₹40"}</strong>
+        </div>
+
+        <div class="total-row grand-total">
+          <span>Total</span>
+          <strong>₹${total}</strong>
+        </div>
+
+        <button class="checkout-btn" onclick="showCheckout()">
+          Continue to Checkout →
+        </button>
+
+      </div>
+    `;
+  }
+
+
+  function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCartCount();
+
+    renderCart();
+  }
+
+
+  function showCheckout() {
+
+    document.getElementById("checkoutForm").style.display = "block";
+
+    document.getElementById("checkoutForm").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+
+  function placeOrder() {
+
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const address = document.getElementById("customerAddress").value.trim();
+    const pincode = document.getElementById("customerPincode").value.trim();
+
+
+    if (!name || !phone || !address || !pincode) {
+
+      alert("Please fill all delivery details.");
+
+      return;
+    }
+
+
+    if (phone.length < 10) {
+
+      alert("Please enter a valid mobile number.");
+
+      return;
+    }
+
+
+    const subtotal = cart.reduce(
+      (total, item) => total + item.price * item.qty,
+      0
+    );
+
+    const delivery = subtotal >= 200 ? 0 : 40;
+
+    const total = subtotal + delivery;
+
+
+    const orderId =
+      "KE" +
+      Date.now().toString().slice(-8);
+
+
+    alert(
+      "Order placed successfully! 🎉\n\n" +
+      "Order ID: " + orderId + "\n" +
+      "Total: ₹" + total + "\n" +
+      "Payment: Cash on Delivery\n\n" +
+      "Thank you for shopping with Krishna Enterprises!"
+    );
+
+
+    cart = [];
+
+    updateCartCount();
+
+    closeCart();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+
+  function searchProducts() {
+
+    const search =
+      document.
